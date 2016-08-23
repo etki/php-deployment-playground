@@ -1,0 +1,20 @@
+#production
+deployment:
+  user: root
+  from: ./
+  to: /var/www/vhosts/example.com/www
+  excludes:
+releases:
+  enabled: true
+  max: 10
+  symlink: current
+  directory: releases
+hosts:
+  - 95.213.203.4
+tasks:
+  pre-deploy:
+  on-deploy: 
+    - composer/install
+    - composer/generate-autoload
+  post-release:
+  post-deploy:

@@ -1,0 +1,14 @@
+#staging
+deployment:
+  user: dummy
+  from: ./
+  to: /var/www/vhosts/example.com/www
+  excludes:
+hosts:
+  - 95.213.195.20
+tasks:
+  pre-deploy:
+  on-deploy:
+    - composer/install
+    - composer/generate-autoload
+  post-deploy:
